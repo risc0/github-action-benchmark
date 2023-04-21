@@ -10,6 +10,7 @@ export interface Config {
     outputFilePath: string;
     ghPagesBranch: string;
     ghRepository: string | undefined;
+    ghRepositoryDir: string;
     benchmarkDataDirPath: string;
     githubToken: string | undefined;
     autoPush: boolean;
@@ -222,6 +223,7 @@ export async function configFromJobInput(): Promise<Config> {
     let outputFilePath: string = core.getInput('output-file-path');
     const ghPagesBranch: string = core.getInput('gh-pages-branch');
     const ghRepository: string = core.getInput('gh-repository');
+    const ghRepositoryDir: string = core.getInput('gh-repository-dir');
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
     const githubToken: string | undefined = core.getInput('github-token') || undefined;
