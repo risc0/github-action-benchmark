@@ -110,7 +110,7 @@ function findAlerts(curSuite: Benchmark, prevSuite: Benchmark, threshold: number
         if (ratio > threshold) {
             core.warning(
                 `Performance alert! Previous value was ${prev.value} and current value is ${current.value}.` +
-                    ` It is ${ratio}x worse than previous exceeding a ratio threshold ${threshold}`,
+                ` It is ${ratio}x worse than previous exceeding a ratio threshold ${threshold}`,
             );
             alerts.push({ current, prev, ratio });
         }
@@ -313,7 +313,7 @@ async function handleAlert(benchName: string, curSuite: Benchmark, prevSuite: Be
         } else {
             core.debug(
                 `${len} alerts exceeding the alert threshold ${alertThreshold} were found but` +
-                    ` all of them did not exceed the failure threshold ${threshold}`,
+                ` all of them did not exceed the failure threshold ${threshold}`,
             );
         }
     }
@@ -376,6 +376,7 @@ async function writeBenchmarkToGitHubPagesWithRetry(
         tool,
         ghPagesBranch,
         ghRepository,
+        ghRepositoryDir,
         benchmarkDataDirPath,
         githubToken,
         autoPush,
@@ -389,7 +390,7 @@ async function writeBenchmarkToGitHubPagesWithRetry(
     let extraGitArguments: string[] = [];
 
     if (githubToken && !skipFetchGhPages && ghRepository) {
-        benchmarkBaseDir = './benchmark-data-repository';
+        benchmarkBaseDir = ghRepositoryDir;
         await git.clone(githubToken, ghRepository, benchmarkBaseDir);
         extraGitArguments = [`--work-tree=${benchmarkBaseDir}`, `--git-dir=${benchmarkBaseDir}/.git`];
         await git.checkout(ghPagesBranch, extraGitArguments);
@@ -398,7 +399,7 @@ async function writeBenchmarkToGitHubPagesWithRetry(
     } else if (isPrivateRepo && !skipFetchGhPages) {
         core.warning(
             "'git pull' was skipped. If you want to ensure GitHub Pages branch is up-to-date " +
-                "before generating a commit, please set 'github-token' input to pull GitHub pages branch",
+            "before generating a commit, please set 'github-token' input to pull GitHub pages branch",
         );
     } else {
         console.warn('NOTHING EXECUTED:', {
