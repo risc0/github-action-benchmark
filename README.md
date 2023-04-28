@@ -33,6 +33,11 @@ Multiple languages in the same repository are supported for polyglot projects.
 [Japanese Blog post](https://rhysd.hatenablog.com/entry/2019/11/11/131505)
 
 
+## Build a distribution
+
+```bash
+npm run build && npm run package
+```
 
 ## Examples
 
