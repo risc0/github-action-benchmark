@@ -6,6 +6,7 @@
   "main": "dist/src/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "package": "ncc build --source-map",
     "lint": "eslint '**/*.{ts,js}'",
     "fix": "eslint --fix '**/*.{ts,js}'",
     "format": "prettier -w **",
@@ -37,6 +38,7 @@
     "@actions/io": "^1.1.2"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.36.1",
     "@types/acorn": "^4.0.5",
     "@types/cheerio": "^0.22.16",
     "@types/deep-diff": "^1.0.0",

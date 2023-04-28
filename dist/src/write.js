@@ -322,7 +322,7 @@ async function writeBenchmarkToGitHubPagesWithRetry(bench, config, retry) {
             benchmarkBaseDir = ghRepositoryDir;
         }
         else {
-            benchmarkBaseDir = "./benchmark-data-repository";
+            benchmarkBaseDir = './benchmark-data-repository';
         }
         await git.clone(githubToken, ghRepository, benchmarkBaseDir);
         extraGitArguments = [`--work-tree=${benchmarkBaseDir}`, `--git-dir=${benchmarkBaseDir}/.git`];

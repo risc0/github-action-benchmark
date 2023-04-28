@@ -79,4 +79,4 @@ inputs:
 
 runs:
   using: 'node16'
-  main: 'dist/src/index.js'
+  main: 'dist/index.js'
